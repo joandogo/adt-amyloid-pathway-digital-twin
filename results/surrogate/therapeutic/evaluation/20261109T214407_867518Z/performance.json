@@ -1,0 +1,24 @@
+{
+  "surrogate_benchmark": {
+    "warmup": "one individual and one full-batch prediction per target",
+    "individual_repeats": 10,
+    "individual_seconds_per_32_target_request_median": 0.08998516399879009,
+    "batch_repeats": 3,
+    "batch_requests_per_repeat": 1344,
+    "batch_seconds_for_32_targets_median": 0.29098122401046567,
+    "batch_seconds_per_32_target_request": 0.00021650388691254885,
+    "prediction_label": "surrogate_predicted",
+    "operational_speedup_vs_archived_integration_batch": 14283.471708957419
+  },
+  "mechanistic_archive": {
+    "source": "archived JT1 batch wall timestamps",
+    "wall_seconds_sum": 76667.453744,
+    "integrations": 24792,
+    "wall_seconds_per_archived_integration": 3.092427143594708,
+    "caveat": "Includes refined variants, gate, writing and verification; it is an operational comparison, not a pure solver benchmark."
+  },
+  "evaluation_prediction_seconds": {
+    "internal": 0.42751347593730316,
+    "external": 0.0
+  }
+}

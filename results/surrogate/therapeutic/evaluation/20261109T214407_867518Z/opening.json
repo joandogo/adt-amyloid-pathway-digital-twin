@@ -1,0 +1,12 @@
+{
+  "profile": "P15_E1",
+  "stage": "test_opening",
+  "status": "opened",
+  "opened_utc": "2026-11-09T21:44:07.875601+00:00",
+  "selection_directory": "results/surrogate/therapeutic/selection/20261109T213412_881933Z",
+  "selection_summary_sha256": "7f187648f43754196615b0ec6c9efbac93df07a2036dfc2cb5629e49c404aef1",
+  "dataset_directory": "results/surrogate/therapeutic/dataset/20261109T031215_747498Z",
+  "dataset_summary_sha256": "e873904dca5e4d970842e01c3667a36a084430e39f832eb36c43eb948b3fc0f6",
+  "test_sha256": "60cb8fc367eaaa97580d448362ce24fbebb59d444e52eba5a41a59b573953eab",
+  "policy": "explicit_once_after_frozen_selection"
+}

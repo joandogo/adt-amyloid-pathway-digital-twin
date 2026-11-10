@@ -1,0 +1,71 @@
+# JT1-A2FULL selected by the human. Subjects are synthetic design points,
+# not calibrated patients and not a clinical population sample.
+profile: P15_JT1_A2FULL
+status: selected
+source:
+  final_config: config/cohorts/final.yaml
+  final_config_sha256: c42e0406c7ec70dd83372ea6a871bc448ecccde539aa023b61e717844e0ac142
+  p14_collection: results/cohorts/final/collection/20261105T183902_712405Z
+  p14_summary_sha256: bf19059ad822346022e35b723c03f9106b1214b3e0116d648ad16650adb7e066
+  p14_candidates_sha256: 8d74cf571908837dd04cf96bbfd02dd9ebdbc99c1d99611fea728e686e62d504
+  p14_outcomes_sha256: 9bc1930bb0c5843a6c3740e100a80c00e39acaae7d541ae51f241b2dd31bb623
+  p12_collection: results/interventions/paired/collection/20261019T192951_015661Z
+  p12_summary_sha256: e26df90cc38b1b43e77b73e1ec35781d6e743a4f7043e110b20cf961ae656631
+  p12_contrasts_sha256: 125d40a276e9d837f09edfbf5d4887d40f92cfb675cd0b7d9570273b517a40a8
+  p12_descriptive_sha256: e9ecc394764c97e0aaaa7b4df9802b9c82b51f0f1bb3f6a26f8ea518d5cc0ca2
+  interventions_file: config/interventions.yaml
+  interventions_sha256: 921198d936a41e22b8bf5a762c0f2b6d3b8dce79aeecf595e8e56e25940a9a43
+state_order: [A, C99, A40, A42, O, P, I]
+design:
+  source_candidates: 10000
+  selected_subjects: 1024
+  stratification_dimensions: [k_BACE_multiplier, C_i, I_ext]
+  bins_per_dimension: 4
+  cells: 64
+  subjects_per_cell: 16
+  selection: deterministic_without_replacement_within_cell
+  batches: 8
+  batch_size: 128
+  subjects_per_cell_per_batch: 2
+  numerical_policy: JT1-A2FULL
+  numerical_variants: [main, radau_refined, bdf_refined]
+  initial_state: p14_main_final_state_at_2000_from_npz
+  paired_control: own_subject_control
+  e1_split_per_cell: {train: 10, validation: 3, test: 3}
+seeds:
+  derivation: sha256_utf8_first_128_bits_big_endian_to_numpy_pcg64
+  selection_domain: P15_JT1_selection
+  batch_domain: P15_JT1_batches
+  split_domain: P15_E1_split
+  selection_lineage: p14_summary_sha256
+  batch_lineage: p14_summary_sha256
+  split_lineage: jt1_allocation_manifest_sha256
+joint_gate:
+  source: p14_joint_gate
+  points: 9
+  assigned_batch: 1
+  required_before_subjects: true
+interventions:
+  arms: [control, GSI_01, GSI_02, GSI_03, GSI_04, GSM_low, GSM_medium, GSM_high]
+  combinations_enabled: false
+evaluation:
+  horizon: 2000.0
+  checkpoints: [200.0, 500.0, 1000.0, 2000.0]
+outcomes:
+  primary_metric: AUC_A42
+  primary_checkpoint: 2000.0
+  contrast: percent_change_from_own_control
+  archived_metrics: [AUC_A42, A42_final, Ratio_42_40, AUC_O, P_final, AUC_I, C99_max, AUC_C99]
+  responder_classification: continuous_only
+  biological_status: unclassified
+acceptance:
+  mode: technical_only
+  require_full_trajectory: true
+  require_numerical_agreement_per_subject_arm: true
+  allowed_undefined_outcome: A40_zero_at_checkpoint_for_Ratio_42_40_only
+  failure_policy: no_silent_replacement
+  population_inference: false
+archive:
+  trajectory: npz_compressed_all_variants
+  primary_variant: main
+output_root: results/interventions/joint_final

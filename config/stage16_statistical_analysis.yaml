@@ -1,0 +1,86 @@
+# P16 SA1: design-based statistics for the frozen JT1+E1 publication sources.
+profile: P16_SA1
+status: selected
+source:
+  jt1_collection: results/interventions/joint_final/collection/20261107T131803_436266Z
+  jt1_summary_sha256: 4be1260b028cea5871406d222895b94ad4d47f6899315b202b0ed87a99b2cbcd
+  jt1_subjects_sha256: 4f2fb0df47c4b00b3f52a915e62048bece80407cc4051b9a010596e3ed56b7f9
+  jt1_contrasts_sha256: 20601b2cdc0e8c7f4139ae7a286933b934f3da8ec712697168701156536ab309
+  jt1_agreement_sha256: 63d16be0d74867d11d2d70eb5ef9baa64d1d9033dc1243a97802a1fca252f524
+  dataset_dir: results/surrogate/therapeutic/dataset/20261109T031215_747498Z
+  dataset_summary_sha256: e873904dca5e4d970842e01c3667a36a084430e39f832eb36c43eb948b3fc0f6
+  selection_dir: results/surrogate/therapeutic/selection/20261109T213412_881933Z
+  selection_summary_sha256: 7f187648f43754196615b0ec6c9efbac93df07a2036dfc2cb5629e49c404aef1
+  evaluation_dir: results/surrogate/therapeutic/evaluation/20261109T214407_867518Z
+  evaluation_summary_sha256: 13b9a026010d58f7e4c6b51a2cc3faccc0890ac4f08bf28b2d2bb0982a1e77b0
+  internal_predictions_sha256: 1eaa22b5573eca4692afa686aecd3789a3f1001d940db5d4e3bfd209ce1566b0
+  internal_metrics_sha256: 3abb89d2813785933c32024a81927731c65cc456d450cbde5aabfc50f0256612
+  internal_metrics_json_sha256: 40d1cf8d0ddc59a7b1c7c1a1b15e3fe33991d37e84a879d17b1e363d847f9ec7
+  acceptance_sha256: 59d23c8ef86ad70dc42e4fd27c04220343bf568aaac2061f2b4adeded1663736
+  external_rejections_sha256: 111c2457c6d3a0cdcba713a1fdf79c0cac2c19b54b08834c8e0e459d7cc1c24f
+  performance_sha256: 1e8e5748f9a7ba7acba51f25dbf53b0a7ec3c5272e8969aef53da8b676e1f391
+  publication_dir: results/publication/stage15/20261110T003911_463217Z
+  publication_summary_sha256: 5d9a4c3ea30b74570fe7041ffb49055724a2ade22fc1ad9dc926ce69b3f327f6
+design:
+  unit: subject
+  subjects: 1024
+  cells: 64
+  subjects_per_cell: 16
+  factors: [k_BACE_multiplier, C_i, I_ext]
+  bins_per_factor: 4
+  treated_arms: [GSI_01, GSI_02, GSI_03, GSI_04, GSM_low, GSM_medium, GSM_high]
+  checkpoints: [200.0, 500.0, 1000.0, 2000.0]
+  metrics: [AUC_A42, A42_final, Ratio_42_40, AUC_O, P_final, AUC_I, C99_max, AUC_C99]
+estimands:
+  primary: {metric: AUC_A42, checkpoint: 2000.0}
+  tradeoff: {metric: C99_max, checkpoint: 2000.0}
+  contrast_field: percent_change_from_control
+  zero_band_percentage_points: 0.05
+summaries:
+  standard_deviation_ddof: 1
+  quantiles: [0.05, 0.25, 0.5, 0.75, 0.95]
+bootstrap:
+  replicates: 5000
+  stratification: cell_id
+  resampling_unit: subject
+  interval_quantiles: [0.025, 0.975]
+  seed_namespace: P16_SA1_bootstrap
+  label: 95% design-bootstrap interval
+  mechanistic_endpoints:
+    - {metric: AUC_A42, checkpoint: 2000.0}
+    - {metric: C99_max, checkpoint: 2000.0}
+  surrogate_endpoint:
+    target_id: AUC_A42__t2000
+    statistic: median_absolute_residual
+monotonicity:
+  tolerance: 0.000000000001
+  GSI: [GSI_01, GSI_02, GSI_03, GSI_04]
+  GSM: [GSM_low, GSM_medium, GSM_high]
+  AUC_A42_direction: nonincreasing
+  C99_max_direction: nondecreasing
+tradeoff:
+  checkpoint: 2000.0
+  objectives:
+    AUC_A42: minimize
+    C99_max: minimize
+  dominance_tolerance: 0.000000000001
+heterogeneity:
+  response: {metric: AUC_A42, checkpoint: 2000.0}
+  decomposition: orthogonal_balanced_4x4x4
+  components: [k_BACE, C_i, I_ext, k_BACE:C_i, k_BACE:I_ext, C_i:I_ext, k_BACE:C_i:I_ext, within_cell]
+  main_arms: [GSI_03, GSM_high]
+  hypothesis_tests: false
+temporal:
+  direction_band_percentage_points: 0.05
+surrogate:
+  primary_target: AUC_A42__t2000
+  reuse_frozen_metrics_only: true
+  allow_refit: false
+  p12_accuracy_metrics: false
+inference:
+  population_inference: false
+  primary_p_values: false
+  interval_interpretation: design_sampling_sensitivity_not_population_confidence
+archive:
+  output_root: results/publication/stage16_analysis
+  snapshot_source: true

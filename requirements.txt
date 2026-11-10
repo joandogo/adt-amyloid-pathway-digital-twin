@@ -1,0 +1,2 @@
+# Dependency versions and optional publication extra are defined in pyproject.toml.
+-e .[publication]

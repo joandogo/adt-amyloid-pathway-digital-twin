@@ -1,0 +1,97 @@
+# E1 surrogate protocol approved by the human on 2026-11-08.
+# Test targets remain sealed until the explicit evaluate --open-test action.
+profile: P15_E1
+status: selected
+source:
+  jt1_collection: results/interventions/joint_final/collection/20261107T131803_436266Z
+  jt1_summary_sha256: 4be1260b028cea5871406d222895b94ad4d47f6899315b202b0ed87a99b2cbcd
+  jt1_subjects_sha256: 4f2fb0df47c4b00b3f52a915e62048bece80407cc4051b9a010596e3ed56b7f9
+  jt1_initial_states_sha256: 239e2b139cfea52f62159aba817d597d356a877a399a8c93f77a8fc00c943f63
+  jt1_contrasts_sha256: 20601b2cdc0e8c7f4139ae7a286933b934f3da8ec712697168701156536ab309
+  p12_collection: results/interventions/paired/collection/20261019T192951_015661Z
+  p12_summary_sha256: e26df90cc38b1b43e77b73e1ec35781d6e743a4f7043e110b20cf961ae656631
+  p12_contrasts_sha256: 125d40a276e9d837f09edfbf5d4887d40f92cfb675cd0b7d9570273b517a40a8
+  p12_pilot_dir: results/cohorts/pilot/20261018T211553_269326Z
+  p12_pilot_summary_sha256: c91f580b709c91654c2697c803625d636ed6427f1ce59868898ac0993ab491e3
+  p12_pilot_inputs_sha256: c3b24e97409b7610ba4af63dc976bbf73f3330e03912257b61a395acba6baff3
+state_order: [A, C99, A40, A42, O, P, I]
+dataset:
+  unit: subject
+  splits: {train: 640, validation: 192, test: 192}
+  subjects_per_cell: {train: 10, validation: 3, test: 3}
+  treated_arms: [GSI_01, GSI_02, GSI_03, GSI_04, GSM_low, GSM_medium, GSM_high]
+  rows_per_target: {train: 4480, validation: 1344, test: 1344}
+  feature_columns: [k_BACE_multiplier, C_i, I_ext, A, C99, A40, A42, O, P, I, is_GSI, rho_GSI, is_GSM, delta_f42_GSM]
+  forbidden_features: [subject_id, p14_index, cell_id, batch, split, path, timestamp, control_value, refined_outcome, surrogate_prediction]
+  target_field: percent_change_from_control
+  undefined_reason_field: contrast_reason
+  minimum_defined_fraction: 0.90
+  primary_requires_complete_train_validation: true
+targets:
+  strategy: independent_metric_checkpoint
+  metrics: [AUC_A42, A42_final, Ratio_42_40, AUC_O, P_final, AUC_I, C99_max, AUC_C99]
+  checkpoints: [200.0, 500.0, 1000.0, 2000.0]
+  count: 32
+  primary: {metric: AUC_A42, checkpoint: 2000.0}
+  responder_classification: disabled
+models:
+  families: [arm_median, ridge, polynomial_ridge, hist_gradient_boosting]
+  mlp_enabled: false
+  target_scaling: standard_train_only
+  # Decimal notation avoids YAML loaders treating exponent forms as strings.
+  ridge_alpha: [0.000001, 0.001, 1.0, 1000.0, 1000000.0]
+  polynomial_degree: 2
+  polynomial_interaction_only: false
+  hist_gradient_boosting:
+    learning_rate: [0.03, 0.10]
+    max_leaf_nodes: [7, 15, 31]
+    l2_regularization: [0.0, 1.0]
+    max_iter: 300
+    min_samples_leaf: 20
+    early_stopping: false
+  configurations_per_target: 23
+  total_fit_budget: 736
+selection:
+  metric: macro_arm_nrmse
+  tie_relative_tolerance: 0.01
+  complexity_order: [arm_median, ridge, polynomial_ridge, hist_gradient_boosting]
+  primary_improvement_over_baseline: 0.10
+  refit_with_validation: false
+  test_open_policy: explicit_once_after_frozen_selection
+acceptance:
+  primary:
+    global_nrmse_max: 0.20
+    macro_arm_nrmse_max: 0.25
+    each_arm_nrmse_max: 0.35
+    p95_absolute_error_over_global_scale_max: 0.50
+    sign_concordance_min: 0.95
+    sign_band_over_global_scale: 0.05
+    boundary_nrmse_max: 0.30
+    internal_domain_coverage_min: 1.0
+  secondary:
+    median_global_nrmse_max: 0.25
+    targets_required_below_nrmse: 28
+    target_nrmse_threshold: 0.40
+    worst_global_nrmse_max: 0.60
+  require_finite_predictions: true
+domain:
+  factor_ranges:
+    k_BACE_multiplier: [1.25, 2.0]
+    C_i: [0.5, 0.75]
+    I_ext: [0.25, 1.0]
+  state_support: full_jt1_minmax_feature_only
+  allowed_protocol: {horizon: 2000.0, checkpoints: [200.0, 500.0, 1000.0, 2000.0]}
+  reject_incomplete: true
+  clip_outside_domain: false
+external:
+  dataset: P12_C1_paired
+  use_for_selection: false
+  hard_acceptance_gate: false
+  evaluate_after_internal_test: true
+  report_domain_rejections: true
+archive:
+  prediction_label: surrogate_predicted
+  model_format: python_pickle
+  snapshot_source: true
+  hash_all_artifacts: true
+output_root: results/surrogate/therapeutic

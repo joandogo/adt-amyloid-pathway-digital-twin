@@ -1,0 +1,30 @@
+# Q2 selected by the user, with the proposed M1 integration and S0 preparation seed.
+# These are computational design choices, not biological measurements.
+profile: Q2
+time_unit: "dimensionless tau = k_Ires,ref * physical elapsed time; no calibrated physical-time conversion"
+state_normalization: "common molecular-equivalent scale S1 from nominal constitutive APP balance at I=0; fixed across subjects and interventions"
+inflammation_normalization: "I and I_ext normalized by reference K_IB; independent of the molecular scale"
+preparation:
+  minimum_time: 200.0
+  maximum_time: 2000.0
+  window: 50.0
+  consecutive_windows: 3
+  check_interval: 1.0
+  derivative_guard_horizon: 100.0
+  state_absolute_tolerances: [1.0e-8, 1.0e-8, 1.0e-8, 1.0e-8, 1.0e-8, 1.0e-8, 1.0e-8]
+  state_relative_tolerance: 1.0e-6
+solver:
+  method: Radau
+  rtol: 1.0e-8
+  atol: 1.0e-10
+  max_step: 0.5
+  negative_tolerance: 0.0
+# Artificial preparation seed; not a measured or accepted healthy state.
+initial_state:
+  A: 1.0
+  C99: 0.0
+  A40: 0.0
+  A42: 0.0
+  O: 0.0
+  P: 0.0
+  I: 0.0

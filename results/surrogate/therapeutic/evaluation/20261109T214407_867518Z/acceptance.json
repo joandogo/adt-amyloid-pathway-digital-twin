@@ -1,0 +1,49 @@
+{
+  "profile": "P15_E1",
+  "primary_target": "AUC_A42__t2000",
+  "primary_thresholds": {
+    "global_nrmse_max": 0.2,
+    "macro_arm_nrmse_max": 0.25,
+    "each_arm_nrmse_max": 0.35,
+    "p95_absolute_error_over_global_scale_max": 0.5,
+    "sign_concordance_min": 0.95,
+    "sign_band_over_global_scale": 0.05,
+    "boundary_nrmse_max": 0.3,
+    "internal_domain_coverage_min": 1.0
+  },
+  "primary_checks": {
+    "evaluated": true,
+    "all_test_targets_defined": true,
+    "global_nrmse": true,
+    "macro_arm_nrmse": true,
+    "each_arm_nrmse": true,
+    "p95_absolute_error": true,
+    "sign_concordance": true,
+    "boundary_nrmse": true,
+    "finite_predictions": true,
+    "domain_coverage": true
+  },
+  "primary_passed": true,
+  "secondary_thresholds": {
+    "median_global_nrmse_max": 0.25,
+    "targets_required_below_nrmse": 28,
+    "target_nrmse_threshold": 0.4,
+    "worst_global_nrmse_max": 0.6
+  },
+  "secondary_summary": {
+    "evaluated_targets": 31,
+    "median_global_nrmse": 0.0003811253044830579,
+    "targets_below_nrmse": 31,
+    "worst_global_nrmse": 0.02075140724242942
+  },
+  "secondary_checks": {
+    "all_31_evaluated": true,
+    "median_global_nrmse": true,
+    "targets_below_nrmse": true,
+    "worst_global_nrmse": true,
+    "finite_predictions": true
+  },
+  "secondary_passed": true,
+  "accepted_for_within_domain_screening": true,
+  "failure_policy": "archive_negative_result_without_retuning"
+}

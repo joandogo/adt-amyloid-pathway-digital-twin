@@ -1,0 +1,132 @@
+{
+  "profile": "P15_JT1_A2FULL",
+  "status": "confirmed",
+  "numerically_confirmed": true,
+  "technical_acceptance_only": true,
+  "biological_status": "unclassified",
+  "population_inference": false,
+  "responder_classification": "not_assessed",
+  "subjects_selected": 1024,
+  "cells": 64,
+  "subjects_per_cell": 16,
+  "batches_confirmed": 8,
+  "batch_size": 128,
+  "arms_per_subject": 8,
+  "variants_per_arm": 3,
+  "joint_gate_points_confirmed": 9,
+  "integrations_archived": 24792,
+  "agreement_rows": 16528,
+  "agreement_rows_passing": 16528,
+  "outcome_rows": 262144,
+  "contrast_rows": 229376,
+  "initial_state_rows": 1024,
+  "descriptive_rows": 224,
+  "config_sha256": "5c9fcc1f600bbfd30458ccfd530b0cd94fc2d0d051b57a6b470de04134225783",
+  "interventions_sha256": "921198d936a41e22b8bf5a762c0f2b6d3b8dce79aeecf595e8e56e25940a9a43",
+  "p14_summary_sha256": "bf19059ad822346022e35b723c03f9106b1214b3e0116d648ad16650adb7e066",
+  "p14_candidates_sha256": "8d74cf571908837dd04cf96bbfd02dd9ebdbc99c1d99611fea728e686e62d504",
+  "p14_outcomes_sha256": "9bc1930bb0c5843a6c3740e100a80c00e39acaae7d541ae51f241b2dd31bb623",
+  "p12_summary_sha256": "e26df90cc38b1b43e77b73e1ec35781d6e743a4f7043e110b20cf961ae656631",
+  "p12_contrasts_sha256": "125d40a276e9d837f09edfbf5d4887d40f92cfb675cd0b7d9570273b517a40a8",
+  "p12_descriptive_sha256": "e9ecc394764c97e0aaaa7b4df9802b9c82b51f0f1bb3f6a26f8ea518d5cc0ca2",
+  "allocation_manifest_sha256": "9038865ba24a2c3793fe5c68548fffea31d307c5bd43760419863e9291183abb",
+  "subject_manifest_sha256": "4f2fb0df47c4b00b3f52a915e62048bece80407cc4051b9a010596e3ed56b7f9",
+  "derived_seeds": {
+    "selection": 222425363903262513885964800663198147459,
+    "batch": 290861878007699525066588401775694997372,
+    "split": 12012016792591739525171556772600687874
+  },
+  "source_sha256": {
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "basal_cli.py": "2bd6262f55aefffdedb2f7a48f72f5517a169e0d7c7559b44fca17ff5df8df05",
+    "challenge_cli.py": "088577eaf616d495482d5540ac97452c5b6a5ccbc7f4f00c02340af495071e87",
+    "challenge_metrics.py": "6076bc9790ee465060db17034afbe6ec10218296fa903e9736ca9674830c00b3",
+    "challenge_plan.py": "5c000dd09a4297726b24cda1ffd5759d46f9181821ea77651d23ef1cf628e21e",
+    "challenges.py": "5279382e7a2c55e4eb9518e34165b67906771be9de73cdd81b51834882b25177",
+    "confirmed_reference.py": "f1d8eff2da4238a0886d4a199927f3b212e4aaf086d985658a4258fe452d4910",
+    "equilibrium.py": "3e8ab43bdc8fcdff05547df8b56ea8c7fbe51b40efa80af1db85d0f50be4e35f",
+    "final_cohort_cli.py": "ecf5d69be7547ffdd0aa3c25fd217aadf949a91ad1ab5a817fe63c88dfcbb92c",
+    "final_cohort_collection_cli.py": "899dc97021af89837cb241cd7a29ae6c96074971defde99dddec7a137b3cf97c",
+    "identifiability.py": "8f2459994844cc146f13d84529834058f680c1cd2200fe24149f9633c445d2dc",
+    "identifiability_cli.py": "d6290406576dce623305ae21eb8ab71c896b77409899d38bb6c07f0484518635",
+    "identifiability_closure_cli.py": "1d5836cc7d56123e3ac82f136605f3ce3bc6fc1425c85b2e70e89543948f47f1",
+    "inputs.py": "74455aa2b9eaf0131cf71546df6e9429155b18c661d544eff8ddacbad2cfed46",
+    "interventions.py": "97df64e636f2cd69a20b8f2993b49fd8e364472ce0df7808175d04d167c4779e",
+    "joint_interventions_cli.py": "46363191637b52f3e7d111ee025c0ac035cdf18129077caf2ef4654e11171d63",
+    "joint_interventions_collection_cli.py": "ebf2ff13caef37982ce35f1e4d033609ee87646292e4af93f7c7f7c550ebb6e3",
+    "model.py": "94d180932d8545937dbc653f0b9ebbac96058dd298da5f0d8cf102a4b574c265",
+    "numerical_validation.py": "106b39851d3b15b8848922f4dc587017fe62a186411caa0d5c6a1e730e8a3713",
+    "outcomes.py": "5928358cb53140dc116ec3bddc3b09c2c44e08589e2cf126a1cd20a8a4a62469",
+    "paired_collection_cli.py": "6063e3ccca4910356a2acb05fd27ba0198ecc891294e2f4155bca410612ac05b",
+    "paired_interventions_cli.py": "6c5a3fba87860d8fb1938b0ef3c7695a1bb4535ff25b5ffc3c8966cc9592125c",
+    "parameters.py": "2dbcb21f42eeebd83cb9fa44d539b002d9955329d705d1fc174675d71e680abd",
+    "phenotype_cli.py": "5595beaa1ad073c567d8df3693ceaf560782000de2d8ada19a6259051cba136b",
+    "phenotype_validation_cli.py": "639f7098a35bc268ade269e0bd6fe0c78e2c8d5fb612012b50ff369b39cc1d04",
+    "pilot_cohort_cli.py": "8fa210788c5cd739c117c290136af1bf541a46fa5086150bcfa20fb45e3cf387",
+    "progress.py": "074a050dc5248453c935544afa7ff4dc2077a03104cb5192bf99fa12b994a7f6",
+    "reference_artifacts.py": "ec5ad0b7228dffec65e89f7ec79ea21970dcdbd967953ee467e3a25396a7fecc",
+    "sampling.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sensitivity.py": "a2bb7513c53205a5909a86ae32bac68c201a576af387a31f7afc13236237afdb",
+    "sensitivity_cli.py": "27f62764949dba2525d1b4fa48453fbac8fcfbc6c7f0c284fad4f82b8bdad92c",
+    "sensitivity_collection_cli.py": "c9bec76936a3ea705d5e8a6b0828372d11bbae69eaffc9fc5993c74bd2153c27",
+    "simulate.py": "549685f5d6dc26756e3e245b6add7da2e2309f87bc00e0dfc9c876a89c57880f",
+    "sobol.py": "4f77db7734a01d749a5d104b3a6023a2cb7cf82385d9106b564cad31380ef65e",
+    "sobol_c_cli.py": "0538dd3c022213acfc8c86ff8316dfab534c9b6931a815bbf7af4074730a22ac",
+    "sobol_c_collection_cli.py": "1ae8ef1acebfd482802687d3718ce84b29f1076c2479536c315d29d93076736b",
+    "sobol_cli.py": "d795c8641839a29efa7aea0908f80ad7ebc22649325429dabeecdaba5e7bf169",
+    "sobol_collection_cli.py": "ea213d988cd8fb23874368ee726625307dd09c4a0d882ba05030d4ac9760a824",
+    "states.py": "f4b8a6dfb9d06f22454de7eba4cab834def6133a41379b17476d61d37f620a8d",
+    "steady_state.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sweep_cli.py": "30dab4239e65273eea535a8b209626fa5e599d86534282bf0751e8d5062dbf2d",
+    "sweep_plan.py": "b1fcbc9d9454ff72db6a1cad255066e8e5d7caca23d6fd07048991e9edf11175",
+    "sweeps.py": "46ee31291502f3d11647fa3ed3a896206f25dd4f95e95390bfb811cdf316203e",
+    "validation.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validation_cli.py": "93862dfa6432ff4cabca600f8ccadcd75365c5441b819d5a5fef99d8d0a45d1f"
+  },
+  "settings_sha256": {
+    "main": "b29c51df3920b28127a79d9ff79aec7e8233fb1141cc5451e6ab06fdf426a060",
+    "radau_refined": "f1aa81492ab2171f73c48d391268bbf72b931510fd52204fb772d5b32bf8f1c7",
+    "bdf_refined": "4c3ecf0aad29143333d287ff9738bdc680427af60d44be2dcf6a993035cbe1a4"
+  },
+  "batches": {
+    "1": {
+      "directory": "results/interventions/joint_final/batch_01/20261106T002102_249347Z",
+      "summary_sha256": "03127aa9793dbdf38e47e8ee7902eadc864b872bbb9e4765a31dde1864a1daeb"
+    },
+    "2": {
+      "directory": "results/interventions/joint_final/batch_02/20261106T121446_896792Z",
+      "summary_sha256": "9c2d1d3f259c248fe09a144e50f004b6a2e943d599acd49872edba0c5e20530e"
+    },
+    "3": {
+      "directory": "results/interventions/joint_final/batch_03/20261106T181657_863433Z",
+      "summary_sha256": "e04b921abc21330ebb11b037f91b7cf059160a1f7f60804c1c130a13bbe7b0a2"
+    },
+    "4": {
+      "directory": "results/interventions/joint_final/batch_04/20261106T231303_376300Z",
+      "summary_sha256": "ec8a8b06ad6b09e822b6d6562741c125b6721d39349e9628827a32a20fe4ffb5"
+    },
+    "5": {
+      "directory": "results/interventions/joint_final/batch_05/20261107T013034_339726Z",
+      "summary_sha256": "c213740828c15176489a37752e6c11ef09c2f414c3ed08ae652654527b9907fb"
+    },
+    "6": {
+      "directory": "results/interventions/joint_final/batch_06/20261107T042757_699987Z",
+      "summary_sha256": "eb0a0d633400a36169afd17287806237ae4909c711baf001b7014c3a7834f410"
+    },
+    "7": {
+      "directory": "results/interventions/joint_final/batch_07/20261107T063812_263868Z",
+      "summary_sha256": "9f5d8f6c5523ad017aa6c5715a07c59245b86b968f6c38f8b1561c24594c8e0e"
+    },
+    "8": {
+      "directory": "results/interventions/joint_final/batch_08/20261107T084320_829720Z",
+      "summary_sha256": "901a2c7f449da21c4947a270334a84b1468955829bb87962da9f56b37cc3bcb7"
+    }
+  },
+  "subjects_file": "subjects.csv",
+  "initial_states_file": "initial_states.csv",
+  "outcomes_file": "outcomes.csv",
+  "contrasts_file": "paired_contrasts.csv",
+  "agreement_file": "numerical_agreement.csv",
+  "descriptive_file": "descriptive_summary.csv",
+  "finished_utc": "2026-11-07T13:18:10.713690+00:00"
+}

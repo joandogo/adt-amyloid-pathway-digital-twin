@@ -1,0 +1,48 @@
+# P1 nominal reference approved by the user on 2026-09-18; not numerically validated.
+# Fractions: fother is derived as 1 - (f40 + f42).
+# Use load_baseline for structural validation; nulls are not nominal values.
+# Evidence review: docs/TASK04_EVIDENCE_REVIEW.md and docs/PARAMETER_PROVENANCE.md.
+# Selection: D1, S1, R=10, F2, P1. Values are conventions, assumptions or derived assumptions.
+# S1: k_syn = k_BACE + k_Aout only when defining the original nominal reference.
+# Keep this common scale fixed across subjects, treatments and robustness variants.
+parameters:
+  k_syn: 100.0
+  k_BACE: 10.0
+  k_Aout: 90.0
+  alpha_I: 1.0
+  # Derived normalization convention: H = dimensional K_IB,ref (user approved).
+  K_IB: 1.0
+  k_gamma: 3.0
+  k_deg_C99: 7.0
+  # F2 approved: r=f42/f40=0.10 (transfer assumption), z=fother=0.12 (design).
+  # Fractions derived jointly: f40=(1-z)/(1+r), f42=r*f40; not measured human values.
+  f40: 0.80
+  f42: 0.08
+  k_O40: 0.10
+  k_O42: 1.0
+  # Assumed effective exponent approved by user; design range [1, 3], not stoichiometry.
+  n_O: 2.0
+  k_P40: 0.01
+  k_P42: 0.10
+  # P1 effective exponent, design range [1, 2]; no stoichiometric interpretation.
+  n_P: 1.5
+  # Derived from assumed R = k_cl40/k_Ires = 10 and reference k_Ires = 1.
+  k_cl40: 10.0
+  k_cl42: 10.0
+  k_OP: 0.50
+  k_clO: 0.50
+  k_clP: 0.01
+  k_IO: 0.50
+  k_IP: 0.50
+  # Derived time convention: T = 1 / dimensional k_Ires,ref (user approved).
+  k_Ires: 1.0
+  K_O: 1.0
+  K_P: 1.0
+  h_O: 1.0
+  h_P: 1.0
+# Values fixed by the healthy-like reference in v0.3.
+subject:
+  C_i: 1.0
+input:
+  kind: constant
+  I_ext: 0.0

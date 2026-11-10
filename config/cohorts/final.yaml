@@ -1,0 +1,57 @@
+# J1+A2 selected by the human. This is an independent uniform synthetic design,
+# not a calibrated human population distribution.
+profile: P14_J1_A2
+status: selected
+source:
+  pilot_dir: results/cohorts/pilot/20261018T211553_269326Z
+  pilot_summary_sha256: c91f580b709c91654c2697c803625d636ed6427f1ce59868898ac0993ab491e3
+  pilot_inputs_sha256: c3b24e97409b7610ba4af63dc976bbf73f3330e03912257b61a395acba6baff3
+  sobol_c_collection: results/sensitivity/sobol_c/collection/20261103T162923_341825Z
+  sobol_c_summary_sha256: bdf78720b1763f8f333a274a480029b9584d5c66992a0c698d10acee869d1d16
+state_order: [A, C99, A40, A42, O, P, I]
+intervention: control
+cohort:
+  design: randomized_latin_hypercube
+  generator: numpy_pcg64_axis_permutations_with_uniform_jitter
+  dimensions: [k_BACE_multiplier, C_i, I_ext]
+  target_candidates: 10000
+  target_accepted: 10000
+  driver_ranges:
+    k_BACE_multiplier: {lower: 1.25, upper: 2.0}
+    C_i: {lower: 0.5, upper: 0.75}
+    I_ext: {lower: 0.25, upper: 1.0}
+  independence: synthetic_design_assumption
+  seed: 1103
+  seed_role: technical_reproducibility_only
+  batch_size: 1000
+  batch_count: 10
+  replacement_policy: no_replacement
+  reference_policy: reuse_confirmed_c1_baseline_not_counted
+joint_gate:
+  enabled: true
+  design: full_factorial_corners_plus_center
+  points: 9
+  assigned_batch: 1
+  required_before_candidates: true
+initialization:
+  protocol: common_basal_step
+evaluation:
+  horizon: 2000.0
+  checkpoints: [200.0, 500.0, 1000.0, 2000.0]
+numerics:
+  variants: [main, radau_refined, bdf_refined]
+  source: pinned_pilot_c1
+  trajectory_archive: npz_compressed_all_variants
+acceptance:
+  mode: technical_only
+  require_full_trajectory: true
+  require_numerical_agreement_per_candidate: true
+  allowed_undefined_outcome: A40_zero_at_checkpoint_for_Ratio_42_40_only
+  failure_policy: no_silent_replacement
+  biological_status: unclassified
+outcomes:
+  primary_variant: main
+  archived_metrics: [AUC_A42, A42_final, Ratio_42_40, AUC_O, P_final, AUC_I, C99_max, AUC_C99]
+  threshold_time_enabled: false
+  population_inference: false
+output_root: results/cohorts/final

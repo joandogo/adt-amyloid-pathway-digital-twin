@@ -1,0 +1,11 @@
+# GSI levels are fixed in v0.3; GSM levels are selected design assumptions.
+# Select GSI by zero-based index; select GSM by low/medium/high label.
+control:
+  rho_GSI: 0.0
+GSI:
+  rho_GSI_levels: [0.10, 0.25, 0.50, 0.75]
+GSM:
+  delta_f42_GSM:
+    low: 0.10
+    medium: 0.25
+    high: 0.50

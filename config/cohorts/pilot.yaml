@@ -1,0 +1,44 @@
+# C1 selected by the human: deterministic synthetic design, not a population.
+# The null seed is unused because this protocol introduces no randomness.
+profile: P11_C1
+status: selected
+reference:
+  preparation_dir: results/preparation/20260919T143232_369582Z
+  confirmed_file: results/numerical_validation/20260921T155954_807710Z/reference_confirmed.json
+  confirmed_sha256: 8fb42327e2560292bfc31c3b62414e60795975940a2b01f050646b5280a04cbf
+  id1_closure: results/identifiability/closures/20261018T173235_843689Z/closure.json
+  id1_closure_sha256: 88d43b05758398b42a00816bb5070911c60c0f63ea577345220b815cd7f27a64
+  f2_summary: results/phenotypes/f2/20261018T210514_407309Z/summary.json
+  f2_summary_sha256: 381ef590b2997dbce40297e580b61b99b3c765214e0b261b01dcf48c54f7fa3e
+state_order: [A, C99, A40, A42, O, P, I]
+intervention: control
+cohort:
+  design: deterministic_stratified
+  target_accepted: 120
+  reference_policy: single_shared_not_counted
+  counts:
+    production_driven: 40
+    clearance_deficient: 40
+    inflammation_driven: 40
+  driver_ranges:
+    k_BACE_multiplier: {lower: 1.25, upper: 2.0}
+    C_i: {lower: 0.5, upper: 0.75}
+    I_ext: {lower: 0.25, upper: 1.0}
+  endpoint_policy: inclusive_even_spacing
+  seed: null
+initialization:
+  protocol: common_basal_step
+evaluation:
+  horizon: 2000.0
+  checkpoints: [200.0, 500.0, 1000.0, 2000.0]
+  numerical_source: results/sweeps/20260922T133505_102985Z
+acceptance:
+  mode: technical_only
+  require_full_trajectory: true
+  require_numerical_agreement: true
+  failure_policy: no_silent_replacement
+  biological_status: unclassified
+outcomes:
+  archived_metrics: [AUC_A42, A42_final, Ratio_42_40, AUC_O, P_final, AUC_I, C99_max, AUC_C99]
+  threshold_time_enabled: false
+output_root: results/cohorts/pilot

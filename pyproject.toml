@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adt"
+version = "0.3.0.dev0"
+description = "Pathway-level amyloidogenic digital twin prototype"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["PyYAML>=6.0", "numpy", "scipy", "scikit-learn>=1.4,<2"]
+
+[project.optional-dependencies]
+publication = ["matplotlib>=3.8,<4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

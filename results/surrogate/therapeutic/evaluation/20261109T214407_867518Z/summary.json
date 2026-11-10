@@ -1,0 +1,32 @@
+{
+  "profile": "P15_E1",
+  "stage": "evaluation",
+  "status": "accepted",
+  "test_opened": true,
+  "test_opened_once": true,
+  "retuning_after_test": false,
+  "accepted_for_within_domain_screening": true,
+  "primary_passed": true,
+  "secondary_passed": true,
+  "internal_rows": 43008,
+  "external_rows": 26880,
+  "internal_domain_rejections": {},
+  "external_hard_gate": false,
+  "config_sha256": "284281e04273a4bcccef2953fc23a506a6333f9febb6fa9f0735d5ce6b963a25",
+  "dataset_summary_sha256": "e873904dca5e4d970842e01c3667a36a084430e39f832eb36c43eb948b3fc0f6",
+  "selection_summary_sha256": "7f187648f43754196615b0ec6c9efbac93df07a2036dfc2cb5629e49c404aef1",
+  "test_sha256": "60cb8fc367eaaa97580d448362ce24fbebb59d444e52eba5a41a59b573953eab",
+  "artifact_sha256": {
+    "internal_predictions.csv": "1eaa22b5573eca4692afa686aecd3789a3f1001d940db5d4e3bfd209ce1566b0",
+    "internal_metrics.csv": "3abb89d2813785933c32024a81927731c65cc456d450cbde5aabfc50f0256612",
+    "internal_metrics.json": "40d1cf8d0ddc59a7b1c7c1a1b15e3fe33991d37e84a879d17b1e363d847f9ec7",
+    "acceptance.json": "59d23c8ef86ad70dc42e4fd27c04220343bf568aaac2061f2b4adeded1663736",
+    "external_predictions.csv": "3bb69897e1f7cd4b057da99097500f49c913c1bc09c15d8ae01d98a13b1dc80c",
+    "external_metrics.csv": "11fb05a3df371cde38139b06e52393354d7428c313b91d7a9e98fcbac0c1dcca",
+    "external_metrics.json": "3ead602d933b793d1c77caf445c812ce178a8817d7e7d45389fbb44ce65ad951",
+    "external_domain_rejections.json": "111c2457c6d3a0cdcba713a1fdf79c0cac2c19b54b08834c8e0e459d7cc1c24f",
+    "performance.json": "1e8e5748f9a7ba7acba51f25dbf53b0a7ec3c5272e8969aef53da8b676e1f391"
+  },
+  "resumed_opening": false,
+  "finished_utc": "2026-11-09T21:44:16.179702+00:00"
+}

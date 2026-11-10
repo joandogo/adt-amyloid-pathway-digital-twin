@@ -1,0 +1,16 @@
+category,item,threshold,observed,passed,interpretation
+primary_fidelity,global_nrmse,0.2,0.00052764049431627,True,frozen_internal_test
+primary_fidelity,macro_arm_nrmse,0.25,0.004297754567558955,True,frozen_internal_test
+primary_fidelity,worst_arm_nrmse,0.35,0.009840669687995468,True,frozen_internal_test
+primary_fidelity,p95_over_global_scale,0.5,0.001105600618948081,True,frozen_internal_test
+primary_fidelity,sign_concordance,0.95,1.0,True,frozen_internal_test
+primary_fidelity,boundary_nrmse,0.3,0.0005401311357820536,True,frozen_internal_test
+primary_fidelity,domain_coverage,1.0,1.0,True,frozen_internal_test
+secondary_fidelity,evaluated_targets,,31,True,frozen_internal_test
+secondary_fidelity,median_global_nrmse,,0.0003811253044830579,True,frozen_internal_test
+secondary_fidelity,targets_below_nrmse,,31,True,frozen_internal_test
+secondary_fidelity,worst_global_nrmse,,0.02075140724242942,True,frozen_internal_test
+applicability,P12_rows,,26880,,external_descriptive_only
+applicability,P12_in_domain_rows,,0,,no_external_accuracy_metric
+performance,batch_seconds_per_32_target_request,,0.00021650388691254885,,operational_hardware_dependent
+performance,operational_speedup,,14283.471708957419,,operational_hardware_dependent

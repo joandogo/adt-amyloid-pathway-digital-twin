@@ -1,0 +1,11 @@
+{
+  "dataset": "P12_external_descriptive",
+  "hard_acceptance_gate": false,
+  "rows": 26880,
+  "in_domain_rows": 0,
+  "rejections": {
+    "factor_outside_domain:C_i": 8960,
+    "factor_outside_domain:k_BACE_multiplier": 17920
+  },
+  "interpretation": "External structured applicability check only; P12 did not select models or thresholds."
+}
